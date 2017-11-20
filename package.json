@@ -1,0 +1,39 @@
+{
+  "name": "me-sida",
+  "version": "1.0.0",
+  "description": "André's Me-sida'",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "nyc --reporter=html --reporter=text mocha test/**/*.js",
+    "report-coveralls": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "author": "André Johansson",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "jstransformer-markdown-it": "^2.0.0",
+    "pug": "^2.0.0-rc.4",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "blanket": "^1.2.3",
+    "clean-css-cli": "^4.1.10",
+    "codecov": "^3.0.0",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.10.0",
+    "eslint-plugin-pug": "^1.1.0",
+    "eslint-plugin-react": "^7.4.0",
+    "html-minifier": "^3.5.6",
+    "htmlhint": "^0.9.13",
+    "istanbul": "^0.4.5",
+    "javascript-style-guide": "^0.9.10",
+    "js-yaml": "^3.10.0",
+    "jsonlint": "^1.6.2",
+    "mocha": "^4.0.1",
+    "nyc": "^11.2.1",
+    "stylelint": "^8.2.0",
+    "uglify-es": "^3.1.6"
+  }
+}

@@ -1,0 +1,4 @@
+less/node_modules/*
+coverage/*
+build/*
+static/js/socket.js
