@@ -58,6 +58,9 @@ form button {
   color: white;
   text-transform: uppercase;
 }
+.chat {
+  display: none;
+}
 .messages {
   list-style-type: none;
   margin: 0;

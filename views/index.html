@@ -8,9 +8,28 @@
         <script src="/js/socket.js"></script>
     </head>
     <body>
-        <ul class="messages" id="messages"></ul>
-        <form action="">
-            <input id="m" autocomplete="off"><button>Send</button>
-        </form>
+        <div class="login" id="login">
+            <form id="userForm">
+                <div class="username">
+                    <label>Enter Username</label>
+                    <input class="form-control" id="username">
+                    <br>
+                    <input type="submit" class="btn btn-default" value="Login">
+                </div>
+            </form>
+        </div>
+
+        <div class="chat" id="chat">
+            <div class="online-users">
+                <div id="onlineHeader">
+                    <h3>Online Users</h3><span class="online-count" id="onlineCount"></span>
+                </div>
+                <ul class="list-group" id="users"></ul>
+            </div>
+            <ul class="messages" id="messages"></ul>
+            <form action="" id="messageForm">
+                <input id="m" autocomplete="off"><button>Send</button>
+            </form>
+        </div>
     </body>
 </html>
