@@ -42,7 +42,7 @@ const mongoDB = (dsn, collection) => {
 
             await col.deleteMany({});
             await col.insert({
-                "user": "Server ",
+                "user": "Server",
                 "message": "Welcome to ChitChatter2000!"
             });
 

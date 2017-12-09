@@ -96,7 +96,7 @@ class ChatServer {
     */
     async saveMessage(name, msg) {
         var item = {
-            user: name + " ",
+            user: name,
             message: msg
         };
 
