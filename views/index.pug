@@ -1,0 +1,37 @@
+doctype html
+html
+    head
+        title ChitChatter2000
+        link(rel='stylesheet', href='/css/style.min.css')
+        script(src='/socket.io/socket.io.js')
+        script(src='https://code.jquery.com/jquery-1.11.1.js')
+        script(src='/js/socket.js')
+    body
+        #login.login
+            h1.header-text ChitChatter2000
+            form#userForm
+                .username
+                    input#username.form-control(placeholder='Nickname')
+                    |
+                    br
+                    |
+                    input.btn.btn-default(type='submit', value='Join')
+        |
+        #chat.chat
+          .online-users
+            #onlineHeader
+              h3 Online Users
+              span#onlineCount.online-count
+            |
+            ul#users.list-group
+          |
+          ul#messages.messages
+              each item in items
+                  li
+                      span.msg-name= item.user
+                      = item.message
+          |
+          form#messageForm(action='')
+            input#m(autocomplete='off', placeholder='Type a message here.')
+            button Send Message
+            <a class="btn-leave" href="/">Leave Chat</a>

@@ -3,10 +3,12 @@
         "browser": true,
         "commonjs": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "jquery": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
+        "ecmaVersion": 8,
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
             "jsx": true
@@ -14,7 +16,7 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "jquery"
     ],
     "rules": {
         "indent": [
@@ -99,7 +101,7 @@
         ],
         "max-len": [
             2,
-            100
+            200
         ],
         "comma-style": [
             2,

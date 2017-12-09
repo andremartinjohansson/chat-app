@@ -4,7 +4,8 @@
         "html"
     ],
     "include": [
-      "src/**/*.js"
+      "src/**/*.js",
+      "static/js/*.js"
     ],
     "exclude": [
       "coverage/"
