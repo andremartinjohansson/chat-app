@@ -12,8 +12,9 @@ class ChatServer {
      */
     constructor() {
         var app = require("../../app/app");
+        const dsn =  process.env.DB_DSN || "mongodb://localhost:27017/chat";
 
-        this.db = require("../mongodb/mongodb.js").mongoDB('mongodb://localhost:27017/chat', 'messages');
+        this.db = require("../mongodb/mongodb.js").mongoDB(dsn, 'messages');
         this.http = require('http').Server(app);
         this.io = require('socket.io')(this.http, {'transports': ['websocket', "\n" +
          'polling']});

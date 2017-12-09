@@ -285,19 +285,25 @@ start-docker:
 .PHONY: test1
 test1:
 	@$(call HELPTEXT,$@)
+	docker-compose up -d mongodb
 	docker-compose run node_latest npm test
+	docker-compose rm -f -s -v mongodb
 
 # target: test2
 .PHONY: test2
 test2:
 	@$(call HELPTEXT,$@)
+	docker-compose up -d mongodb
 	docker-compose run node_7 npm test
+	docker-compose rm -f -s -v mongodb
 
 # target: test3
 .PHONY: test3
 test3:
 	@$(call HELPTEXT,$@)
+	docker-compose up -d mongodb
 	docker-compose run node_6 npm test
+	docker-compose rm -f -s -v mongodb
 
 
 # ------------------------------------------------------------------------

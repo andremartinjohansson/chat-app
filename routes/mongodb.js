@@ -3,7 +3,8 @@
 var express = require('express');
 var router = express.Router();
 
-const db = require("../src/mongodb/mongodb.js").mongoDB('mongodb://localhost:27017/chat', 'messages');
+const dsn =  process.env.DB_DSN || "mongodb://localhost:27017/chat";
+const db = require("../src/mongodb/mongodb.js").mongoDB(dsn, 'messages');
 
 router.get("/reset", async (req, res) => {
     try {

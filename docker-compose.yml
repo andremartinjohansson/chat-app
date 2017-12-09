@@ -1,42 +1,11 @@
 version: "3"
 services:
-    node89:
-        image: "node:8.9"
-        user: "node"
-        working_dir: /home/node/app/
-        ports:
-            - "3089:3089"
-        environment:
-            - DBWEBB_PORT=3089
-        volumes:
-            - ./:/home/node/app
-        command: "npm start"
-    node61:
-        image: "node:6.11"
-        user: "node"
-        working_dir: /home/node/app/
-        ports:
-            - "3061:3061"
-        environment:
-            - DBWEBB_PORT=3061
-        volumes:
-            - ./:/home/node/app
-        command: "npm start"
-    node48:
-        image: "node:4.8"
-        user: "node"
-        working_dir: /home/node/app/
-        ports:
-            - "3048:3048"
-        environment:
-            - DBWEBB_PORT=3048
-        volumes:
-            - ./:/home/node/app
-        command: "npm start"
     node_latest:
         build:
             context: .
             dockerfile: docker/Dockerfile-node-latest
+        environment:
+            - DB_DSN=mongodb://mongodb:27017/chat
         volumes:
             - ./:/app/
         ports:
@@ -45,6 +14,8 @@ services:
         build:
             context: .
             dockerfile: docker/Dockerfile-node-7
+        environment:
+            - DB_DSN=mongodb://mongodb:27017/chat
         volumes:
             - ./:/app/
         ports:
@@ -53,6 +24,8 @@ services:
         build:
             context: .
             dockerfile: docker/Dockerfile-node-6
+        environment:
+            - DB_DSN=mongodb://mongodb:27017/chat
         volumes:
             - ./:/app/
         ports:
@@ -66,3 +39,13 @@ services:
         volumes:
             - ./:/home/node/app
         command: "npm start"
+    mongodb:
+        image: mongo
+        container_name: "mongodb"
+        environment:
+            - MONGO_DATA_DIR=/data/db
+        volumes:
+            - ./data/db:/data/db
+        ports:
+            - 27017:27017
+        command: mongod

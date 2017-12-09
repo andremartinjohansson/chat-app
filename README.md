@@ -10,7 +10,7 @@ Ramverk 2 Chat Application
 
 Simple chat application where multiple users will be able to chat with each other.
 
-**Note**: This is WIP and may not work correctly yet. Chatting in real-time currently works but database and users are not yet implemented.
+**Note**: This is still WIP.
 
 ## Check it out
 
@@ -21,10 +21,10 @@ $ npm install
 $ npm start
 ```
 
-**Note**: The default port is 1337. To change it, you need to set environment variable *DBWEBB_PORT*. Example, to set port to 3353:
+**Note**: The default port is 1337. To change it, you need to set environment variable *CHAT_PORT*. Example, to set port to 3353:
 
 ```
-$ export DBWEBB_PORT=3353
+$ export CHAT_PORT=3353
 ```
 
 ## Testing
@@ -40,6 +40,13 @@ $ npm test
 $ make test1
 $ make test2
 $ make test3
+```
+
+**Note**: The default dsn is set to localhost. It can be changed by setting the
+*DB_DSN* environment variable.
+
+```
+$ export DB_DSN=mongodb://mongodb:27017/chat
 ```
 
 ## Setup with docker

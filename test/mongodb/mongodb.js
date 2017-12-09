@@ -4,7 +4,8 @@ const assert = require("assert");
 const mocha = require('mocha');
 const describe = mocha.describe;
 const it = mocha.it;
-const db = require("../../src/mongodb/mongodb.js").mongoDB('mongodb://localhost:27017/chat', 'test');
+const dsn =  process.env.DB_DSN || "mongodb://localhost:27017/chat";
+const db = require("../../src/mongodb/mongodb.js").mongoDB(dsn, 'test');
 
 describe("Test database", function() {
     describe("Reset collection", function() {
