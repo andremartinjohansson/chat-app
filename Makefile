@@ -121,7 +121,7 @@ check: check-tools-js #check-tools-bash check-tools-php
 
 # target: test               - Run all tests.
 .PHONY: test
-test: htmlhint stylelint eslint jsunittest
+test: htmlhint stylelint eslint
 	@$(call HELPTEXT,$@)
 	[ ! -f composer.json ] || composer validate
 	npm test

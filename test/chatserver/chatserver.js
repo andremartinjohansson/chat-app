@@ -48,7 +48,7 @@ describe("Chat server", function() {
             var client1, client2;
             var numUsers = 0;
 
-            http.listen(1337, async () => {
+            http.listen(1337, () => {
                 var socketURL = 'http://localhost:1337';
 
                 client1 = io.connect(socketURL, options);
@@ -85,29 +85,16 @@ describe("Chat server", function() {
         it("Should disconnect and remove user from server", function(done) {
             this.timeout(5000);
             var http = new ChatServer().http;
-            var client1, client2;
             var numUsers = 0;
 
             http.listen(1337, () => {
                 var socketURL = 'http://localhost:1337';
+                var client1, client2, client3;
 
                 client1 = io.connect(socketURL, options);
+                client3 = io.connect(socketURL, options);
 
-                client1.on('connect', function() {
-                    client1.emit('new user', chatUser1.name, function() {
-                        return;
-                    });
-                });
-
-                client2 = io.connect(socketURL, options);
-
-                client2.on('connect', function() {
-                    client2.emit('new user', chatUser2.name, function() {
-                        return;
-                    });
-                });
-
-                client2.on('get users', function(data) {
+                client3.on('get users', function(data) {
                     numUsers += 1;
                     if (numUsers == 2) {
                         assert.equal(data[0], "Andy");
@@ -119,6 +106,20 @@ describe("Chat server", function() {
                         http.close();
                         done();
                     }
+                });
+
+                client1.on('connect', function() {
+                    client1.emit('new user', chatUser1.name, function() {
+                        return;
+                    });
+
+                    client2 = io.connect(socketURL, options);
+
+                    client2.on('connect', function() {
+                        client2.emit('new user', chatUser2.name, function() {
+                            return;
+                        });
+                    });
                 });
             });
         });
