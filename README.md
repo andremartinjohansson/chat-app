@@ -27,6 +27,13 @@ $ npm start
 $ export CHAT_PORT=3353
 ```
 
+**Note**: The default dsn is set to localhost. It can be changed by setting the
+*DB_DSN* environment variable.
+
+```
+$ export DB_DSN=mongodb://mongodb:27017/chat
+```
+
 ## Testing
 
 ```
@@ -42,12 +49,8 @@ $ make test2
 $ make test3
 ```
 
-**Note**: The default dsn is set to localhost. It can be changed by setting the
-*DB_DSN* environment variable.
-
-```
-$ export DB_DSN=mongodb://mongodb:27017/chat
-```
+**Note**: This will start a container with mongodb which will be used for testing
+database.
 
 ## Setup with docker
 

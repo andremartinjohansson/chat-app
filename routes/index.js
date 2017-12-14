@@ -3,7 +3,7 @@
 var express = require('express');
 var router = express.Router();
 
-const db = require("../src/mongodb/mongodb.js").mongoDB('mongodb://localhost:27017/chat', 'messages');
+const db = require("mongo-amj").init('mongodb://localhost:27017/chat', 'messages');
 
 router.get("/", async (req, res) => {
     const data = await db.get();
