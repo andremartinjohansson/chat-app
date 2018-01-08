@@ -1,37 +1,65 @@
 doctype html
 html
     head
-        title ChitChatter2000
+        title Car Chatter
         link(rel='stylesheet', href='/css/style.min.css')
         script(src='/socket.io/socket.io.js')
-        script(src='https://code.jquery.com/jquery-1.11.1.js')
+        script(type='text/javascript', src='https://code.jquery.com/jquery-1.11.2.min.js')
         script(src='/js/socket.js')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet', type='text/css', href='/jquery-emoji-picker/css/jquery.emojipicker.css')
+        script(type='text/javascript', src='/jquery-emoji-picker/js/jquery.emojipicker.js')
+        link(rel='stylesheet', type='text/css', href='/jquery-emoji-picker/css/jquery.emojipicker.tw.css')
+        script(type='text/javascript', src='/jquery-emoji-picker/js/jquery.emojis.js')
+        script(type='text/javascript').
+            $(document).ready(function(e) {
+            $('#m').emojiPicker();
+            });
     body
         #login.login
-            h1.header-text ChitChatter2000
             form#userForm
                 .username
-                    input#username.form-control(placeholder='Nickname')
+                    img.radio-img(src='/img/radio.png')
+                    h1.header-text Car Chatter
+                    p#infoMessage.indexInfo= message
+                    p#sucMessage.success= success
+                    input#username.form-control(placeholder='Username', required='')
+                    input#password.form-control(type='password' placeholder='Password', required='')
+                    select#city.form-control(name='city', required='')
+                        option(value='', disabled='', selected='') Select your city
+                        option(value='Karlskrona') Karlskrona
+                        option(value='Ronneby') Ronneby
+                        option(value='Karlshamn') Karlshamn
+                        option(value='Sölvesborg') Sölvesborg
+                        option(value='Olofström') Olofström
+                        option(value='Kalmar') Kalmar
+                        option(value='Växjö') Växjö
+                        option(value='Bromölla') Bromölla
+                        option(value='Kristianstad') Kristianstad
                     |
                     br
                     |
-                    input.btn.btn-default(type='submit', value='Join')
+                    input.btn.btn-default(type='submit', value='Login')
+                    |
+                    br
+                    |
+                    a.register-link(href='/register') Register
         |
         #chat.chat
           .online-users
             #onlineHeader
-              h3 Online Users
+              h3#cityHeader
               span#onlineCount.online-count
             |
             ul#users.list-group
           |
           ul#messages.messages
-              each item in items
-                  li
-                      span.msg-name= item.user
-                      = item.message
+          |
+          #actionBar.bar
+            button#embedImg.btn-embed Image Link
+            button#embedVideo.btn-embed Video Link
           |
           form#messageForm(action='')
-            input#m(autocomplete='off', placeholder='Type a message here.')
+            input#m(autocomplete='off', placeholder='Go nuts.')
             button Send Message
-            <a class="btn-leave" href="/">Leave Chat</a>
+            <a class="btn-leave" href="/">Log Out</a>

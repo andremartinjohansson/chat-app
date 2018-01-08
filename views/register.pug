@@ -1,0 +1,24 @@
+doctype html
+html
+    head
+        title Car Chatter
+        link(rel='stylesheet', href='/css/style.min.css')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    body
+        #login.login
+            form#registerForm(method='post', action='/user/new')
+                p.indexInfo= message
+                .register
+                    h1.header-text Register
+                    input.form-control(name='name', placeholder='Username', required='')
+                    input.form-control(type='email', name='email', placeholder='Email', required='')
+                    input.form-control(type='password', name='pw', placeholder='Password', required='')
+                    input.form-control(type='password', name='pw_conf', placeholder='Confirm Password', required='')
+                    |
+                    br
+                    |
+                    input.btn.btn-default(type='submit', value='Register')
+                    |
+                    br
+                    |
+                    a.register-link(href='/') Login

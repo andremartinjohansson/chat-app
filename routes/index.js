@@ -3,14 +3,26 @@
 var express = require('express');
 var router = express.Router();
 
-const db = require("mongo-amj").init('mongodb://localhost:27017/chat', 'messages');
-
 router.get("/", async (req, res) => {
-    const data = await db.get();
+    var info, suc;
 
-    await db.close();
+    if (req.session['reg_success']) {
+        suc = req.session['reg_success'];
+    } else if (req.session['reg']) {
+        info = req.session['reg'];
+    }
     res.render("index", {
-        items: data
+        message: info,
+        success: suc
+    });
+});
+
+router.get("/register", async (req, res) => {
+    if (req.session['reg']) {
+        var info = req.session['reg'];
+    }
+    res.render("register", {
+        message: info
     });
 });
 

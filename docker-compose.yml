@@ -34,6 +34,8 @@ services:
         image: "node:latest"
         user: "node"
         working_dir: /home/node/app/
+        environment:
+            - DB_DSN=mongodb://mongodb:27017/chat
         ports:
             - "1337:1337"
         volumes:

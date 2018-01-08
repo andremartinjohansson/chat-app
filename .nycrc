@@ -5,7 +5,8 @@
     ],
     "include": [
       "src/**/*.js",
-      "static/js/*.js"
+      "static/js/*.js",
+      "routes/*.js"
     ],
     "exclude": [
       "coverage/"

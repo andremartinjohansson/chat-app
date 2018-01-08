@@ -10,7 +10,7 @@ router.get("/reset", async (req, res) => {
     try {
         await db.reset();
         await db.close();
-        res.redirect('back');
+        res.redirect('/');
     } catch (err) {
         console.log(err);
     }

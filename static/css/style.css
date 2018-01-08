@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Racing+Sans+One');
 body {
   font-family: 'Open Sans', sans-serif;
 }
@@ -8,7 +9,9 @@ body {
 .form-control {
   padding: 5px;
   font-size: 16px;
-  color: #8f8f8f;
+  color: #626262;
+  display: block;
+  margin: 10px auto;
 }
 .btn-default {
   margin: 10px;
@@ -19,7 +22,7 @@ body {
   padding: 10px;
   border-radius: 2px;
   cursor: pointer;
-  width: 4em;
+  width: 7.5em;
 }
 .btn-default:hover {
   background-color: #406bff;
@@ -27,7 +30,7 @@ body {
 .chat {
   display: none;
   padding: 10px;
-  height: 100vh;
+  height: 90vh;
 }
 .chat .online-users {
   display: inline-block;
@@ -46,6 +49,13 @@ body {
   list-style: none;
   padding: 5px;
   margin: 0;
+}
+.chat .list-group li {
+  margin-top: 5px;
+}
+.chat .list-group .userItem {
+  cursor: pointer;
+  position: relative;
 }
 .chat form {
   padding: 3px;
@@ -80,12 +90,20 @@ body {
   display: inline-block;
   float: right;
   font-family: 'Ubuntu', sans-serif;
-  max-height: 60%;
+  max-height: 90%;
   overflow-y: scroll;
   border-left: 1px solid gray;
+  overflow-wrap: break-word;
 }
 .messages li {
   padding: 5px 10px;
+}
+.messages .userItem {
+  cursor: pointer;
+  position: relative;
+}
+.messages .userItem:hover {
+  background-color: lightgray;
 }
 .username {
   position: absolute;
@@ -94,7 +112,20 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-  height: 100px;
+  height: 400px;
+  width: 300px;
+  box-shadow: 0 0 10px;
+}
+.register {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 450px;
+  width: 300px;
+  box-shadow: 0 0 10px;
 }
 .btn-leave {
   background-color: #eee;
@@ -116,4 +147,90 @@ body {
   font-weight: bold;
   color: #5c5c5c;
   display: block;
+}
+img.gravatar {
+  position: relative;
+  float: left;
+  border-radius: 50%;
+  margin-right: 10px;
+  max-width: 35px;
+}
+span.usr-name {
+  font-weight: 700;
+  color: #5c5c5c;
+  padding: 5px;
+  display: inline-block;
+  font-size: 18px;
+}
+span.date {
+  color: gray;
+  font-size: 10px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+img.chat-img {
+  max-width: 60%;
+  margin-top: 10px;
+}
+.bar {
+  clear: both;
+  float: right;
+  width: 85%;
+}
+iframe {
+  margin-top: 10px;
+}
+.indexInfo {
+  color: red;
+}
+.success {
+  color: green;
+}
+.register-link {
+  text-decoration: none;
+  display: block;
+  margin: 20px auto;
+  color: #4093ff;
+  width: 100px;
+}
+.register-link:hover {
+  color: #406bff;
+}
+.header-text {
+  font-family: 'Racing Sans One', cursive;
+  font-weight: lighter;
+}
+.btn-embed {
+  padding: 2px 5px;
+  color: #000;
+  background: #FAFAFA none repeat-x top left;
+  border: 1px solid #666;
+  cursor: pointer;
+}
+.btn-embed:hover {
+  background: #E1E1E1 none repeat-x top left;
+}
+.radio-img {
+  position: absolute;
+  left: -170px;
+  top: -120px;
+  transform: rotate(15deg);
+}
+@media screen and (max-width: 800px) {
+  .chat .online-users {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+  }
+  .messages {
+    width: 100%;
+  }
+  .bar {
+    width: 100%;
+  }
+  .chat form {
+    width: 100%;
+  }
 }

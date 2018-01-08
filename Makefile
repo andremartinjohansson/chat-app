@@ -266,14 +266,21 @@ endif
 
 # ------------------------------------------------------------------------
 #
-# Docker testing
+# Docker
 #
 
 # target: start-docker
 .PHONY: start-docker
 start-docker:
 	@$(call HELPTEXT,$@)
+	docker-compose up -d mongodb
 	docker-compose up -d server
+
+# target: stop-docker
+.PHONY: stop-docker
+stop-docker:
+	@$(call HELPTEXT,$@)
+	docker-compose down
 
 
 # ------------------------------------------------------------------------
