@@ -5,3 +5,4 @@ filter:
     excluded_paths:
         - less/node_modules/*
         - coverage/*
+        - static/jquery-emoji-picker/*
