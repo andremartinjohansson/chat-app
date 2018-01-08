@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu');
-@import url('https://fonts.googleapis.com/css?family=Racing+Sans+One');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu|Racing+Sans+One');
 body {
   font-family: 'Open Sans', sans-serif;
 }
@@ -204,12 +203,12 @@ iframe {
 .btn-embed {
   padding: 2px 5px;
   color: #000;
-  background: #FAFAFA none repeat-x top left;
+  background: #fafafa none repeat-x top left;
   border: 1px solid #666;
   cursor: pointer;
 }
 .btn-embed:hover {
-  background: #E1E1E1 none repeat-x top left;
+  background: #e1e1e1 none repeat-x top left;
 }
 .radio-img {
   position: absolute;
@@ -232,5 +231,8 @@ iframe {
   }
   .chat form {
     width: 100%;
+  }
+  .radio-img {
+    display: none;
   }
 }
