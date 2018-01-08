@@ -15,7 +15,7 @@ This is a simple chat application where you can register a user and login to a c
 ## Features
 
 |  Feature                                | Included? |
-|:---------------------------------------:|:--------- |
+|:--------------------------------------- |:---------:|
 | Register user (saved in NoSQL database) | Yes |
 | User login with registered user | Yes |
 | Gravatars based on email | Yes |
