@@ -1,7 +1,7 @@
 {
-  "name": "me-sida",
+  "name": "car-cbatter",
   "version": "1.0.0",
-  "description": "André's Me-sida'",
+  "description": "Car Chatter'",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

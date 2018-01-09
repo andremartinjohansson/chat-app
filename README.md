@@ -19,6 +19,7 @@ This is a simple chat application where you can register a user and login to a c
 | Register user (saved in NoSQL database) | Yes |
 | User login with registered user | Yes |
 | Gravatars based on email | Yes |
+| View/edit profile | No |
 | Select which room to login to | Yes |
 | Select room based on user's location | No |
 | Login to multiple rooms | No |
@@ -127,7 +128,7 @@ The client side, *socket.js* was much harder to test, or rather, make testable. 
 
 As for the routes, the only code that isn't tested in them has to do with sessions. There are modules that could probably be used to test session variables but I put that aside for now.
 
-Locally I get a total coverage of 70%. For some reason coveralls reports differently - 65%. 
+Locally I get a total coverage of 70%. For some reason coveralls reports differently - 65%.
 
 ## CI
 
