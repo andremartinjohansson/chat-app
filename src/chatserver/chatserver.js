@@ -120,12 +120,10 @@ class ChatServer {
 
                 this.users.push({name: socket.username, city: socket.city, avatar: gravatar});
                 this.connections.push(socket);
-                // console.log("%s users online", this.connections.length);
+                socket.emit('build messages', messages);
                 this.io.to(data.city).emit('chat message', {msg: socket.username + " connected", user: "Server", avatar: "https://i.stack.imgur.com/SE2cv.jpg", date: dateTime});
                 this.saveMessage("Server", socket.username + " connected", "https://i.stack.imgur.com/SE2cv.jpg", data.city, dateTime);
                 this.updateUsers(socket.city);
-
-                socket.emit('build messages', messages);
             } else {
                 socket.emit('info', "Wrong username or password.");
             }
