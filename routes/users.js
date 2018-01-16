@@ -16,9 +16,9 @@ router.post("/new", async (req, res) => {
         return;
     } else if (req.body.pw == req.body.pw_conf) {
         var item = {
-            name: req.body.name,
-            pw: req.body.pw,
-            email: req.body.email
+            name: escape(req.body.name),
+            pw: escape(req.body.pw),
+            email: escape(req.body.email)
         };
 
         await db.insert(item);

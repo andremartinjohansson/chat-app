@@ -67,7 +67,7 @@ class ChatServer {
     */
     sendMessage(socket) {
         socket.on('chat message', async (data) => {
-            if (data != "") {
+            if (data.replace(/\s/g, '').length) {
                 if (!socket.username) {
                     socket.username = "Server";
                 }
@@ -148,6 +148,9 @@ class ChatServer {
         this.io.to(city).emit('get users', {users: room, avatars: avatars, loc: city});
     }
 
+    /**
+    * Get the current date
+    */
     theDate() {
         var today = new Date();
         var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();

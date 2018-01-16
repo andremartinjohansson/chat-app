@@ -20,26 +20,46 @@ var onReady = function (client) {
     });
 
     socket.on('chat message', function(data) {
+        var type;
+
         if (imageLink(data.msg)) {
             if (data.msg.includes(".jpg") || data.msg.includes(".png") || data.msg.includes(".jpeg") || data.msg.includes(".gif")) {
                 data.msg = imageLink(data.msg);
+                type = "img";
             }
         } else if (videoLink(data.msg)) {
             data.msg = videoLink(data.msg);
+            type = "vid";
         }
+
+        if (type != "img" && type != "vid") {
+            data.msg = escape(data.msg);
+            data.msg = data.msg.replace(/%20/g, " ");
+        }
+
         $('#messages').append($('<li class="userItem"></li>').html(data.msg).append($('<span class="date">' + data.date + '</span>')).prepend($('<img class="gravatar" src=' + data.avatar + '><span class="msg-name"></span>').text(data.user + " "))); //eslint-disable-line
         updateScroll();
     });
 
     socket.on('build messages', function(items) {
+        var type;
+
         for (var item of items) {
             if (imageLink(item.message)) {
                 if (item.message.includes(".jpg") || item.message.includes(".png") || item.message.includes(".jpeg") || item.message.includes(".gif")) {
                     item.message = imageLink(item.message);
+                    type = "img";
                 }
             } else if (videoLink(item.message)) {
                 item.message = videoLink(item.message);
+                type = "vid";
             }
+
+            if (type != "img" && type != "vid") {
+                item.message = escape(item.message);
+                item.message = item.message.replace(/%20/g, " ");
+            }
+
             $('#messages').append($('<li class="userItem"></li>').html(item.message).append($('<span class="date">' + item.date + '</span>')).prepend($('<img class="gravatar" src=' + item.avatar + '><span class="msg-name"></span>').text(item.user + " "))); //eslint-disable-line
         }
         updateScroll();
@@ -47,9 +67,9 @@ var onReady = function (client) {
 
     $('#userForm').submit(function() {
         socket.emit('new user', {
-            "name": $('#username').val(),
-            "pw": $('#password').val(),
-            "city": $('#city').val()
+            "name": escape($('#username').val()),
+            "pw": escape($('#password').val()),
+            "city": escape($('#city').val())
         }, function() {
             $('#login').hide();
             $('#chat').show();
@@ -81,6 +101,8 @@ var onReady = function (client) {
     $(document).on("click", "#embedImg", function () {
         var link;
 
+        link = escape(link);
+
         if (!client) {
             link = prompt("Image Link:", "");
         } else {
@@ -107,7 +129,7 @@ var onReady = function (client) {
         if (link == null || link == "") {
             $('#m').val('');
         } else {
-            $('#m').val('[video]' + link + '[/video]');
+            $('#m').val('[video]' + escape(link) + '[/video]');
             $("#m").focus();
         }
     });
@@ -136,6 +158,9 @@ var imageLink = function(msg) {
     if (msg.includes("[img]") || msg.includes("[IMG]")) {
         var link = msg.substring(msg.indexOf("]") + 1, msg.lastIndexOf("["));
 
+        if (link.includes("<script>")) {
+            return false;
+        }
         return '<img class="chat-img" src="' + link + '">';
     } else {
         return false;
@@ -146,8 +171,8 @@ var videoLink = function(msg) {
     if (msg.includes("[video]") || msg.includes("[VIDEO]")) {
         var id = msg.substring(msg.indexOf("]") + 1, msg.lastIndexOf("["));
 
-
-        return '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + id + '" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>';
+        id = escape(id);
+        return '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + escape(id) + '" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>';
     } else {
         return false;
     }

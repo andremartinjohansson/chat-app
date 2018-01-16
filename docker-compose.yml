@@ -36,8 +36,9 @@ services:
         working_dir: /home/node/app/
         environment:
             - DB_DSN=mongodb://mongodb:27017/chat
+            - CHAT_PORT=3354
         ports:
-            - "1337:1337"
+            - "3354:3354"
         volumes:
             - ./:/home/node/app
         command: "npm start"
